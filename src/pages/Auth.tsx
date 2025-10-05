@@ -31,7 +31,7 @@ const Auth = () => {
       <div className="container mx-auto px-4 pt-32 pb-20">
         <Card className="max-w-md mx-auto shadow-[var(--shadow-elevated)]">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl font-bold text-center">Welcome</CardTitle>
+            <CardTitle className="text-2xl font-bold text-center font-roboto text-slate-950">Welcome</CardTitle>
             <CardDescription className="text-center">
               Sign in to start building with AI
             </CardDescription>

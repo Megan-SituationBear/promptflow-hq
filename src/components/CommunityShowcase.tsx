@@ -34,7 +34,7 @@ const CommunityShowcase = () => {
     <div className="w-full py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="text-3xl font-bold mb-4 font-roboto text-slate-950">
             Community Creations
           </h2>
           <p className="text-muted-foreground text-lg">
@@ -46,7 +46,7 @@ const CommunityShowcase = () => {
           {projects.map((project, index) => (
             <Card key={index} className="hover:shadow-[var(--shadow-elevated)] transition-all cursor-pointer">
               <CardHeader>
-                <CardTitle className="flex items-center justify-between">
+                <CardTitle className="flex items-center justify-between font-roboto text-slate-950">
                   <span>{project.title}</span>
                 </CardTitle>
                 <CardDescription className="line-clamp-2">

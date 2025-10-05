@@ -46,7 +46,7 @@ const Index = () => {
               <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-white border border-border flex items-center justify-center">
                 <Zap className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Lightning Fast</h3>
+              <h3 className="text-xl font-bold mb-2 font-roboto text-slate-950">Lightning Fast</h3>
               <p className="text-muted-foreground">
                 Generate complex DevOps workflows in seconds with AI
               </p>
@@ -55,7 +55,7 @@ const Index = () => {
               <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-white border border-border flex items-center justify-center">
                 <Shield className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Enterprise Ready</h3>
+              <h3 className="text-xl font-bold mb-2 font-roboto text-slate-950">Enterprise Ready</h3>
               <p className="text-muted-foreground">
                 Built with security and compliance in mind
               </p>
@@ -64,7 +64,7 @@ const Index = () => {
               <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-white border border-border flex items-center justify-center">
                 <Workflow className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Seamless Integration</h3>
+              <h3 className="text-xl font-bold mb-2 font-roboto text-slate-950">Seamless Integration</h3>
               <p className="text-muted-foreground">
                 Connect Salesforce, Slack, Jira, and more
               </p>

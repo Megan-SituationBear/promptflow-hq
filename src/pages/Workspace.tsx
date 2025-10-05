@@ -37,7 +37,7 @@ const Workspace = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold mb-2">Your DevOps Workspace</h1>
+              <h1 className="text-3xl font-bold mb-2 font-roboto text-slate-950">Your DevOps Workspace</h1>
               <div className="flex items-center gap-2">
                 {integrations.map((integration: string) => (
                   <Badge key={integration} variant="secondary">
@@ -77,7 +77,7 @@ const Workspace = () => {
             {/* Refine Section */}
             <Card>
               <CardHeader>
-                <CardTitle>Refine Your Workflow</CardTitle>
+                <CardTitle className="font-roboto text-slate-950">Refine Your Workflow</CardTitle>
                 <CardDescription>
                   Edit and improve your DevOps automation
                 </CardDescription>
@@ -139,7 +139,7 @@ jobs:
                   </TabsContent>
                   <TabsContent value="docs" className="mt-4">
                     <div className="prose prose-sm max-w-none">
-                      <h3>Workflow Documentation</h3>
+                      <h3 className="font-roboto text-slate-950">Workflow Documentation</h3>
                       <p>This automated workflow will:</p>
                       <ul>
                         <li>Trigger on PR approval</li>
@@ -174,7 +174,7 @@ jobs:
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle className="text-base">Activity</CardTitle>
+                <CardTitle className="text-base font-roboto text-slate-950">Activity</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-sm">
@@ -196,7 +196,7 @@ jobs:
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-base">Collaborators</CardTitle>
+                <CardTitle className="text-base font-roboto text-slate-950">Collaborators</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex -space-x-2">
