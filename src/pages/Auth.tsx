@@ -26,7 +26,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--gradient-hero)]">
+    <div className="min-h-screen bg-muted">
       <Navigation />
       <div className="container mx-auto px-4 pt-32 pb-20">
         <Card className="max-w-md mx-auto shadow-[var(--shadow-elevated)]">

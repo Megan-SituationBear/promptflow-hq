@@ -60,7 +60,7 @@ const Workspace = () => {
                 Collaborate
               </Button>
               <Button
-                variant="hero"
+                variant="default"
                 size="sm"
                 onClick={handleSave}
               >
@@ -89,7 +89,7 @@ const Workspace = () => {
                   className="min-h-[150px] mb-4"
                   placeholder="Describe your workflow..."
                 />
-                <Button variant="hero">
+                <Button variant="default">
                   Regenerate
                 </Button>
               </CardContent>

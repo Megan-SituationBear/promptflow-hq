@@ -31,7 +31,7 @@ const projects = [
 
 const CommunityShowcase = () => {
   return (
-    <div className="w-full py-20 bg-muted/30">
+    <div className="w-full py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
@@ -44,7 +44,7 @@ const CommunityShowcase = () => {
         
         <div className="grid md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <Card key={index} className="hover:shadow-[var(--shadow-elevated)] transition-all duration-300 hover:scale-105 cursor-pointer border-border/50">
+            <Card key={index} className="hover:shadow-[var(--shadow-elevated)] transition-all cursor-pointer">
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   <span>{project.title}</span>

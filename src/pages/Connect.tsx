@@ -54,7 +54,7 @@ const Connect = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--gradient-hero)]">
+    <div className="min-h-screen bg-muted">
       <Navigation />
       <div className="container mx-auto px-4 pt-32 pb-20">
         <div className="max-w-4xl mx-auto">
@@ -66,11 +66,11 @@ const Connect = () => {
           </div>
 
           {/* Salesforce - Required */}
-          <Card className="mb-6 shadow-[var(--shadow-elevated)] border-2 border-primary/20">
+          <Card className="mb-6 shadow-[var(--shadow-elevated)] border-2 border-border">
             <CardHeader>
               <div className="flex items-center gap-4">
-                <div className="p-3 rounded-lg bg-primary/10">
-                  <Cloud className="w-8 h-8 text-primary" />
+                <div className="p-3 rounded-lg bg-muted">
+                  <Cloud className="w-8 h-8" />
                 </div>
                 <div className="flex-1">
                   <CardTitle className="flex items-center gap-2">
@@ -82,7 +82,7 @@ const Connect = () => {
                   </CardDescription>
                 </div>
                 <Button
-                  variant={salesforceConnected ? "outline" : "hero"}
+                  variant={salesforceConnected ? "outline" : "default"}
                   onClick={() => setSalesforceConnected(!salesforceConnected)}
                 >
                   {salesforceConnected ? "Connected ✓" : "Connect"}
@@ -144,7 +144,7 @@ const Connect = () => {
 
           <div className="flex justify-center">
             <Button
-              variant="hero"
+              variant="default"
               size="lg"
               onClick={handleContinue}
               disabled={!salesforceConnected}
