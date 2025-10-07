@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FaGoogle, FaMicrosoft, FaLinkedin, FaGithub } from "react-icons/fa";
+import { Badge } from "@/components/ui/badge";
+import { FaGoogle, FaMicrosoft, FaSalesforce, FaKey } from "react-icons/fa";
 import AuthLayout from "@/components/AuthLayout";
 
 const Auth = () => {
@@ -12,7 +13,13 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const [isConnecting, setIsConnecting] = useState(false);
   const [connectionProvider, setConnectionProvider] = useState("");
+  const [lastUsedSSO, setLastUsedSSO] = useState<string | null>(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const lastSSO = localStorage.getItem("lastUsedSSO");
+    setLastUsedSSO(lastSSO);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,6 +27,7 @@ const Auth = () => {
   };
 
   const handleSSO = (provider: string) => {
+    localStorage.setItem("lastUsedSSO", provider);
     setConnectionProvider(provider);
     setIsConnecting(true);
   };
@@ -34,10 +42,10 @@ const Auth = () => {
         <Card className="max-w-md w-full mx-4">
           <CardHeader className="text-center">
             <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              {connectionProvider === "Salesforce" && <FaSalesforce className="w-8 h-8" />}
               {connectionProvider === "Google" && <FaGoogle className="w-8 h-8" />}
               {connectionProvider === "Microsoft" && <FaMicrosoft className="w-8 h-8" />}
-              {connectionProvider === "LinkedIn" && <FaLinkedin className="w-8 h-8" />}
-              {connectionProvider === "GitHub" && <FaGithub className="w-8 h-8" />}
+              {connectionProvider === "SAML" && <FaKey className="w-8 h-8" />}
             </div>
             <CardTitle className="text-2xl font-bold text-foreground">
               Connect to {connectionProvider}
@@ -93,38 +101,66 @@ const Auth = () => {
           <Button
             type="button"
             variant="outline"
-            className="w-full"
+            className="h-11 flex items-center justify-between gap-2 relative"
+            onClick={() => handleSSO("Salesforce")}
+          >
+            <div className="flex items-center gap-2">
+              <FaSalesforce className="w-4 h-4" />
+              <span>Salesforce</span>
+            </div>
+            {lastUsedSSO === "Salesforce" && (
+              <Badge variant="secondary" className="text-[10px] px-1.5 py-0 h-4">
+                Used Last Time
+              </Badge>
+            )}
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            className="h-11 flex items-center justify-between gap-2 relative"
             onClick={() => handleSSO("Google")}
           >
-            <FaGoogle className="w-4 h-4 mr-2" />
-            Google
+            <div className="flex items-center gap-2">
+              <FaGoogle className="w-4 h-4" />
+              <span>Google</span>
+            </div>
+            {lastUsedSSO === "Google" && (
+              <Badge variant="secondary" className="text-[10px] px-1.5 py-0 h-4">
+                Used Last Time
+              </Badge>
+            )}
           </Button>
           <Button
             type="button"
             variant="outline"
-            className="w-full"
+            className="h-11 flex items-center justify-between gap-2 relative"
             onClick={() => handleSSO("Microsoft")}
           >
-            <FaMicrosoft className="w-4 h-4 mr-2" />
-            Microsoft
+            <div className="flex items-center gap-2">
+              <FaMicrosoft className="w-4 h-4" />
+              <span>Microsoft</span>
+            </div>
+            {lastUsedSSO === "Microsoft" && (
+              <Badge variant="secondary" className="text-[10px] px-1.5 py-0 h-4">
+                Used Last Time
+              </Badge>
+            )}
           </Button>
           <Button
             type="button"
             variant="outline"
-            className="w-full"
-            onClick={() => handleSSO("LinkedIn")}
+            className="h-11 flex items-center justify-between gap-2 relative"
+            onClick={() => handleSSO("SAML")}
           >
-            <FaLinkedin className="w-4 h-4 mr-2" />
-            LinkedIn
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            className="w-full"
-            onClick={() => handleSSO("GitHub")}
-          >
-            <FaGithub className="w-4 h-4 mr-2" />
-            GitHub
+            <div className="flex items-center gap-2">
+              <FaKey className="w-4 h-4" />
+              <span>SAML</span>
+            </div>
+            {lastUsedSSO === "SAML" && (
+              <Badge variant="secondary" className="text-[10px] px-1.5 py-0 h-4">
+                Used Last Time
+              </Badge>
+            )}
           </Button>
         </div>
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { FaGoogle, FaMicrosoft, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaGoogle, FaMicrosoft, FaSalesforce, FaKey } from "react-icons/fa";
 import AuthLayout from "@/components/AuthLayout";
 
 const Register = () => {
@@ -25,7 +25,7 @@ const Register = () => {
       <div className="space-y-6">
         <div className="text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-            Create Your Account
+            Let's Start Solving Problems
           </h2>
           <p className="text-sm text-muted-foreground">
             Get started with your free account
@@ -34,6 +34,15 @@ const Register = () => {
 
         {/* SSO Buttons */}
         <div className="grid grid-cols-2 gap-3">
+          <Button
+            type="button"
+            variant="outline"
+            className="h-11 flex items-center justify-center gap-2"
+            onClick={handleSSOClick}
+          >
+            <FaSalesforce className="w-4 h-4" />
+            <span>Salesforce</span>
+          </Button>
           <Button
             type="button"
             variant="outline"
@@ -58,17 +67,8 @@ const Register = () => {
             className="h-11 flex items-center justify-center gap-2"
             onClick={handleSSOClick}
           >
-            <FaLinkedin className="w-4 h-4" />
-            <span>LinkedIn</span>
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            className="h-11 flex items-center justify-center gap-2"
-            onClick={handleSSOClick}
-          >
-            <FaGithub className="w-4 h-4" />
-            <span>GitHub</span>
+            <FaKey className="w-4 h-4" />
+            <span>SAML</span>
           </Button>
         </div>
 
