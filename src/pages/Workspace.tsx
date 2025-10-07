@@ -1,233 +1,118 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import Navigation from "@/components/Navigation";
-import ChatInput from "@/components/ChatInput";
-import { Star, Users, Save, Code, FileText, Settings } from "lucide-react";
+import { ArrowLeft, Share2, Star } from "lucide-react";
+import InlinePromptInput from "@/components/InlinePromptInput";
 import { toast } from "sonner";
 
 const Workspace = () => {
   const location = useLocation();
-  const prompt = location.state?.prompt || "";
-  const integrations = location.state?.integrations || [];
+  const navigate = useNavigate();
+  const prompt = location.state?.prompt || "Untitled Workspace";
   const [isStarred, setIsStarred] = useState(false);
-  const [refinedPrompt, setRefinedPrompt] = useState(prompt);
+  const [createdTime] = useState(new Date());
+
+  const formatTime = (date: Date) => {
+    const now = new Date();
+    const diff = Math.floor((now.getTime() - date.getTime()) / 1000);
+    
+    if (diff < 60) return "Just now";
+    if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+    if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+    return date.toLocaleDateString();
+  };
 
   const handleStar = () => {
     setIsStarred(!isStarred);
     toast.success(isStarred ? "Removed from favorites" : "Added to favorites");
   };
 
-  const handleSave = () => {
-    toast.success("Workspace saved successfully");
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href);
+    toast.success("Link copied to clipboard");
   };
 
-  const handleCollaborate = () => {
-    toast.info("Collaboration invite sent");
+  const handlePromptSubmit = (newPrompt: string) => {
+    toast.success("Processing your request...");
+    console.log("New prompt:", newPrompt);
   };
 
   return (
-    <div className="min-h-screen bg-background pb-24">
-      <Navigation />
-      <div className="container mx-auto px-4 pt-20 md:pt-24 pb-20">
-        {/* Header */}
-        <div className="mb-6 md:mb-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold mb-2 font-roboto text-slate-950">Your DevOps Workspace</h1>
-              <div className="flex flex-wrap items-center gap-2">
-                {integrations.map((integration: string) => (
-                  <Badge key={integration} variant="secondary" className="text-xs">
-                    {integration}
-                  </Badge>
-                ))}
-              </div>
+    <div className="min-h-screen bg-background flex flex-col">
+      {/* Navigation Bar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between gap-4">
+          {/* Back Button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate("/home")}
+            className="flex items-center gap-2 text-primary hover:text-primary/80"
+          >
+            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+              <ArrowLeft className="w-5 h-5 text-white" />
             </div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleStar}
-                className={isStarred ? "text-primary" : ""}
-              >
-                <Star className={`w-4 h-4 ${isStarred ? "fill-current" : ""}`} />
-              </Button>
-              <Button variant="outline" size="sm" onClick={handleCollaborate}>
-                <Users className="w-4 h-4 mr-1 sm:mr-0" />
-                <span className="sm:hidden">Collaborate</span>
-              </Button>
-              <Button
-                variant="default"
-                size="sm"
-                onClick={handleSave}
-              >
-                <Save className="w-4 h-4 mr-1 sm:mr-0" />
-                <span className="sm:hidden">Save</span>
-              </Button>
+            <span className="font-medium hidden sm:inline">BACK</span>
+          </Button>
+
+          {/* Center - Prompt and Time */}
+          <div className="flex-1 text-center px-4 overflow-hidden">
+            <h1 className="text-sm sm:text-base font-medium text-foreground truncate">
+              {prompt}
+            </h1>
+            <p className="text-xs text-muted-foreground">
+              {formatTime(createdTime)}
+            </p>
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleShare}
+              className="hover:text-primary"
+            >
+              <Share2 className="w-5 h-5" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleStar}
+              className={isStarred ? "text-primary" : ""}
+            >
+              <Star className={`w-5 h-5 ${isStarred ? "fill-current" : ""}`} />
+            </Button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content Area */}
+      <main className="flex-1 pt-16 pb-32">
+        <div className="container mx-auto px-4 py-8">
+          {/* Placeholder for workspace content */}
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="text-center py-12">
+              <h2 className="text-2xl font-bold mb-2 font-roboto text-slate-950">
+                Your Workspace
+              </h2>
+              <p className="text-muted-foreground">
+                Start building your automation by refining your prompt below
+              </p>
             </div>
           </div>
         </div>
+      </main>
 
-        <div className="grid lg:grid-cols-3 gap-4 md:gap-6">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Refine Section */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-roboto text-slate-950">Refine Your Workflow</CardTitle>
-                <CardDescription>
-                  Edit and improve your DevOps automation
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Textarea
-                  value={refinedPrompt}
-                  onChange={(e) => setRefinedPrompt(e.target.value)}
-                  className="min-h-[150px] mb-4"
-                  placeholder="Describe your workflow..."
-                />
-                <Button variant="default">
-                  Regenerate
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Generated Output */}
-            <Card>
-              <CardHeader>
-                <Tabs defaultValue="code">
-                  <TabsList>
-                    <TabsTrigger value="code">
-                      <Code className="w-4 h-4 mr-2" />
-                      Code
-                    </TabsTrigger>
-                    <TabsTrigger value="docs">
-                      <FileText className="w-4 h-4 mr-2" />
-                      Documentation
-                    </TabsTrigger>
-                    <TabsTrigger value="config">
-                      <Settings className="w-4 h-4 mr-2" />
-                      Configuration
-                    </TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="code" className="mt-4">
-                    <div className="bg-muted p-4 rounded-lg font-mono text-sm">
-                      <pre className="text-foreground/80">
-{`# CI/CD Pipeline Configuration
-name: Deploy to Staging
-
-on:
-  pull_request:
-    types: [opened, synchronize]
-    
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Deploy to Salesforce
-        run: |
-          sfdx force:source:deploy
-      - name: Notify Slack
-        run: |
-          echo "Deployment complete"`}
-                      </pre>
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="docs" className="mt-4">
-                    <div className="prose prose-sm max-w-none">
-                      <h3 className="font-roboto text-slate-950">Workflow Documentation</h3>
-                      <p>This automated workflow will:</p>
-                      <ul>
-                        <li>Trigger on PR approval</li>
-                        <li>Deploy to Salesforce staging org</li>
-                        <li>Send notifications to Slack</li>
-                        <li>Create deployment logs in Confluence</li>
-                      </ul>
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="config" className="mt-4">
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium">Auto-deploy on approval</span>
-                        <Badge>Enabled</Badge>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium">Slack notifications</span>
-                        <Badge>Enabled</Badge>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium">Test coverage required</span>
-                        <Badge variant="secondary">80%</Badge>
-                      </div>
-                    </div>
-                  </TabsContent>
-                </Tabs>
-              </CardHeader>
-            </Card>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-base font-roboto text-slate-950">Activity</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="text-sm">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 rounded-full bg-primary"></div>
-                    <span className="font-medium">Workflow generated</span>
-                  </div>
-                  <p className="text-muted-foreground text-xs ml-4">Just now</p>
-                </div>
-                <div className="text-sm">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 rounded-full bg-muted"></div>
-                    <span className="font-medium">Connected to Salesforce</span>
-                  </div>
-                  <p className="text-muted-foreground text-xs ml-4">2 minutes ago</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-base font-roboto text-slate-950">Collaborators</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex -space-x-2">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="w-8 h-8 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center text-xs font-medium"
-                    >
-                      {String.fromCharCode(64 + i)}
-                    </div>
-                  ))}
-                  <Button variant="outline" size="sm" className="ml-4">
-                    <Users className="w-3 h-3 mr-1" />
-                    Invite
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+      {/* AI Input at Bottom */}
+      <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border py-4">
+        <div className="container mx-auto px-4">
+          <InlinePromptInput
+            placeholder="Refine your prompt or add more details..."
+            onSubmit={handlePromptSubmit}
+          />
         </div>
       </div>
-      
-      {/* Chat Input */}
-      <ChatInput 
-        placeholder="Refine your workflow or ask questions..."
-        onSubmit={(prompt) => {
-          setRefinedPrompt(prompt);
-          toast.success("Processing your request...");
-        }}
-      />
     </div>
   );
 };

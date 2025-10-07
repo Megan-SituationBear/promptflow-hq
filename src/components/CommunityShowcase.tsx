@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, GitFork, Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const projects = [
   {
@@ -30,6 +31,18 @@ const projects = [
 ];
 
 const CommunityShowcase = () => {
+  const navigate = useNavigate();
+
+  const handleProjectClick = (project: typeof projects[0]) => {
+    const workspaceId = Date.now().toString(36) + Math.random().toString(36).substring(2);
+    navigate(`/workspace/${workspaceId}`, { 
+      state: { 
+        prompt: project.title,
+        description: project.description 
+      } 
+    });
+  };
+
   return (
     <div className="w-full py-12 md:py-20 bg-white px-4">
       <div className="container mx-auto">
@@ -44,7 +57,11 @@ const CommunityShowcase = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, index) => (
-            <Card key={index} className="hover:shadow-[var(--shadow-elevated)] transition-all cursor-pointer">
+            <Card 
+              key={index} 
+              className="hover:shadow-[var(--shadow-elevated)] transition-all cursor-pointer"
+              onClick={() => handleProjectClick(project)}
+            >
               <CardHeader>
                 <CardTitle className="flex items-center justify-between font-roboto text-slate-950">
                   <span>{project.title}</span>

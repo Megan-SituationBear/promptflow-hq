@@ -30,7 +30,8 @@ const InlinePromptInput = ({
       if (onSubmit) {
         onSubmit(prompt);
       } else {
-        navigate("/connect", { state: { prompt } });
+        const workspaceId = Date.now().toString(36) + Math.random().toString(36).substring(2);
+        navigate(`/workspace/${workspaceId}`, { state: { prompt } });
       }
       setPrompt("");
     }

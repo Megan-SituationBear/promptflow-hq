@@ -24,7 +24,7 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/home" element={<Home />} />
           <Route path="/connect" element={<Connect />} />
-          <Route path="/workspace" element={<Workspace />} />
+          <Route path="/workspace/:id" element={<Workspace />} />
           <Route path="/community" element={<Community />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
