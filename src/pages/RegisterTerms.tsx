@@ -15,7 +15,7 @@ const RegisterTerms = () => {
   };
 
   return (
-    <AuthLayout>
+    <AuthLayout gradientVariant="balanced">
       <div className="space-y-6">
         <div className="text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">

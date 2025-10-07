@@ -4,16 +4,23 @@ import copadoLogoVertical from "@/assets/copado-logo-vertical.svg";
 interface AuthLayoutProps {
   children: React.ReactNode;
   showBackButton?: boolean;
+  gradientVariant?: 'purple' | 'blue' | 'balanced';
 }
 
-const AuthLayout = ({ children, showBackButton = false }: AuthLayoutProps) => {
+const AuthLayout = ({ children, showBackButton = false, gradientVariant = 'balanced' }: AuthLayoutProps) => {
+  const gradients = {
+    purple: 'linear-gradient(135deg, hsl(265 60% 80%) 0%, hsl(285 55% 70%) 100%)',
+    blue: 'linear-gradient(135deg, hsl(185 65% 80%) 0%, hsl(200 60% 75%) 100%)',
+    balanced: 'linear-gradient(135deg, hsl(185 60% 85%) 0%, hsl(265 55% 75%) 100%)'
+  };
+
   return (
     <div className="min-h-screen w-full relative overflow-hidden">
       {/* Gradient Background */}
       <div 
         className="absolute inset-0 -z-10"
         style={{
-          background: 'linear-gradient(135deg, hsl(185 60% 85%) 0%, hsl(265 55% 75%) 100%)'
+          background: gradients[gradientVariant]
         }}
       />
       

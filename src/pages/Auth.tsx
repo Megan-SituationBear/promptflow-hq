@@ -16,7 +16,7 @@ const Auth = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/home");
+    navigate("/register/terms");
   };
 
   const handleSSO = (provider: string) => {
@@ -25,7 +25,7 @@ const Auth = () => {
   };
 
   const handleAcceptConnection = () => {
-    navigate("/home");
+    navigate("/register/terms");
   };
 
   if (isConnecting) {
@@ -77,7 +77,7 @@ const Auth = () => {
   }
 
   return (
-    <AuthLayout showBackButton={false}>
+    <AuthLayout showBackButton={false} gradientVariant="blue">
       <div className="space-y-6">
         <div className="text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">

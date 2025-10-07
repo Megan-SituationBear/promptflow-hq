@@ -16,8 +16,12 @@ const Register = () => {
     navigate("/register/terms");
   };
 
+  const handleSSOClick = () => {
+    navigate("/register/terms");
+  };
+
   return (
-    <AuthLayout>
+    <AuthLayout gradientVariant="purple">
       <div className="space-y-6">
         <div className="text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
@@ -34,7 +38,7 @@ const Register = () => {
             type="button"
             variant="outline"
             className="h-11 flex items-center justify-center gap-2"
-            onClick={() => {/* TODO: Google SSO */}}
+            onClick={handleSSOClick}
           >
             <FaGoogle className="w-4 h-4" />
             <span>Google</span>
@@ -43,7 +47,7 @@ const Register = () => {
             type="button"
             variant="outline"
             className="h-11 flex items-center justify-center gap-2"
-            onClick={() => {/* TODO: Microsoft SSO */}}
+            onClick={handleSSOClick}
           >
             <FaMicrosoft className="w-4 h-4" />
             <span>Microsoft</span>
@@ -52,7 +56,7 @@ const Register = () => {
             type="button"
             variant="outline"
             className="h-11 flex items-center justify-center gap-2"
-            onClick={() => {/* TODO: LinkedIn SSO */}}
+            onClick={handleSSOClick}
           >
             <FaLinkedin className="w-4 h-4" />
             <span>LinkedIn</span>
@@ -61,7 +65,7 @@ const Register = () => {
             type="button"
             variant="outline"
             className="h-11 flex items-center justify-center gap-2"
-            onClick={() => {/* TODO: GitHub SSO */}}
+            onClick={handleSSOClick}
           >
             <FaGithub className="w-4 h-4" />
             <span>GitHub</span>
@@ -73,7 +77,7 @@ const Register = () => {
             <span className="w-full border-t border-border" />
           </div>
           <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
+            <span className="bg-white px-2 text-muted-foreground">
               Or continue with email
             </span>
           </div>
