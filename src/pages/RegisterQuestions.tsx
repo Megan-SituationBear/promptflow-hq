@@ -18,7 +18,7 @@ const questions: Question[] = [
   {
     id: 1,
     title: "Welcome!",
-    question: "What Should I Call You?",
+    question: "What's your favorite name?",
     placeholder: "Your Favorite Name",
     field: "name",
     type: "text"
@@ -26,26 +26,24 @@ const questions: Question[] = [
   {
     id: 2,
     title: "Tell us more",
-    question: "What's Your Role?",
-    field: "role",
+    question: "How can I free up your day?",
+    field: "freeUpDay",
     type: "choice",
-    choices: ["DevOps Engineer", "SRE", "Developer", "QA Engineer", "Product Manager", "Other"]
+    choices: [
+      "Identify & template repetitive work",
+      "Translate my Salesforce work into plain language",
+      "Scan & identify and fix trending support issues",
+      "Tell me what Salesforce work I do on repeat",
+      "Proactively clean up my org"
+    ]
   },
   {
     id: 3,
     title: "Almost there",
-    question: "What's Your Primary Focus?",
-    field: "focus",
+    question: "Want to work:",
+    field: "workPreference",
     type: "choice",
-    choices: ["CI/CD Automation", "Cloud Infrastructure", "Testing & Quality", "Release Management"]
-  },
-  {
-    id: 4,
-    title: "Last question",
-    question: "What's Something You Want To Do Less Of?",
-    placeholder: "e.g., Manual deployments, Debugging pipelines",
-    field: "painPoint",
-    type: "text"
+    choices: ["on my own", "with my team", "manage my team"]
   }
 ];
 
@@ -53,9 +51,8 @@ const RegisterQuestions = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({
     name: "",
-    role: "",
-    focus: "",
-    painPoint: ""
+    freeUpDay: "",
+    workPreference: ""
   });
   const [isAnimating, setIsAnimating] = useState(true);
   const navigate = useNavigate();
