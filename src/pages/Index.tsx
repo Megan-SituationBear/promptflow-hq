@@ -1,9 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
 import heroBackground from "@/assets/hero-bg.jpg";
+import InlinePromptInput from "@/components/InlinePromptInput";
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handlePromptSubmit = (prompt: string) => {
+    navigate("/connect", { state: { prompt } });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Simple Navigation */}
@@ -34,10 +41,16 @@ const Index = () => {
               Transform your workflows with intelligent automation. Connect your tools, describe what you need, and watch AI build it.
             </p>
             <Link to="/auth">
-              <Button size="lg" className="mb-4 font-roboto capitalize tracking-tight w-full sm:w-auto">
+              <Button size="lg" className="mb-8 font-roboto capitalize tracking-tight w-full sm:w-auto">
                 Get Started Free
               </Button>
             </Link>
+            
+            {/* AI Prompt Input */}
+            <InlinePromptInput 
+              onSubmit={handlePromptSubmit}
+              placeholder="Describe your DevOps workflow... (e.g., 'Create a CI/CD pipeline that deploys to staging when PR is approved')"
+            />
           </div>
         </div>
       </section>

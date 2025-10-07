@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation";
-import ChatInput from "@/components/ChatInput";
+import InlinePromptInput from "@/components/InlinePromptInput";
 import CommunityShowcase from "@/components/CommunityShowcase";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +29,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen">
       <Navigation />
       
       {/* Hero Section */}
@@ -42,6 +42,12 @@ const Home = () => {
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 md:mb-8 font-roboto px-4">
               Describe your workflow in plain English and watch AI build it for you
             </p>
+
+            {/* AI Prompt Input */}
+            <InlinePromptInput 
+              onSubmit={handlePromptSubmit}
+              placeholder={placeholders[currentPlaceholder]}
+            />
           </div>
         </div>
       </section>
@@ -65,12 +71,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Chat Input */}
-      <ChatInput 
-        onSubmit={handlePromptSubmit}
-        placeholder={placeholders[currentPlaceholder]}
-      />
     </div>
   );
 };
