@@ -8,11 +8,13 @@ import SendButton from "@/assets/send-button.svg";
 interface InlinePromptInputProps {
   placeholder?: string;
   onSubmit?: (prompt: string) => void;
+  hideIdeas?: boolean;
 }
 
 const InlinePromptInput = ({ 
   placeholder = "How can I help you today?", 
-  onSubmit 
+  onSubmit,
+  hideIdeas = false
 }: InlinePromptInputProps) => {
   const [prompt, setPrompt] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -122,18 +124,20 @@ const InlinePromptInput = ({
         </div>
       </div>
 
-      <div className="flex items-center justify-center gap-2 mt-4 flex-wrap">
-        <span className="text-sm text-muted-foreground">Try:</span>
-        {ideaPills.map((pill, idx) => (
-          <button
-            key={idx}
-            onClick={() => handlePillClick(pill)}
-            className="px-4 py-2 rounded-full border border-border bg-background hover:bg-accent transition-colors text-sm"
-          >
-            {pill}
-          </button>
-        ))}
-      </div>
+      {!hideIdeas && (
+        <div className="flex items-center justify-center gap-2 mt-4 flex-wrap">
+          <span className="text-sm text-muted-foreground">Try:</span>
+          {ideaPills.map((pill, idx) => (
+            <button
+              key={idx}
+              onClick={() => handlePillClick(pill)}
+              className="px-4 py-2 rounded-full border border-border bg-background hover:bg-accent transition-colors text-sm"
+            >
+              {pill}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
