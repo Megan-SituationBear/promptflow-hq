@@ -37,7 +37,7 @@ const Register = () => {
             onClick={() => {/* TODO: Google SSO */}}
           >
             <FaGoogle className="w-4 h-4" />
-            <span className="hidden sm:inline">Google</span>
+            <span>Google</span>
           </Button>
           <Button
             type="button"
@@ -46,7 +46,7 @@ const Register = () => {
             onClick={() => {/* TODO: Microsoft SSO */}}
           >
             <FaMicrosoft className="w-4 h-4" />
-            <span className="hidden sm:inline">Microsoft</span>
+            <span>Microsoft</span>
           </Button>
           <Button
             type="button"
@@ -55,7 +55,7 @@ const Register = () => {
             onClick={() => {/* TODO: LinkedIn SSO */}}
           >
             <FaLinkedin className="w-4 h-4" />
-            <span className="hidden sm:inline">LinkedIn</span>
+            <span>LinkedIn</span>
           </Button>
           <Button
             type="button"
@@ -64,7 +64,7 @@ const Register = () => {
             onClick={() => {/* TODO: GitHub SSO */}}
           >
             <FaGithub className="w-4 h-4" />
-            <span className="hidden sm:inline">GitHub</span>
+            <span>GitHub</span>
           </Button>
         </div>
 
@@ -92,13 +92,6 @@ const Register = () => {
               className="h-11"
             />
           </div>
-
-          <Button 
-            type="submit"
-            className="w-full"
-          >
-            Next
-          </Button>
           
           <div className="space-y-2">
             <Label htmlFor="password" className="text-foreground">Password</Label>
@@ -112,6 +105,13 @@ const Register = () => {
               className="h-11"
             />
           </div>
+
+          <Button 
+            type="submit"
+            className="w-full"
+          >
+            Next
+          </Button>
         </form>
       </div>
     </AuthLayout>
