@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import Navigation from "@/components/Navigation";
+import ChatInput from "@/components/ChatInput";
 import { Cloud, MessageSquare, BookOpen, Ticket } from "lucide-react";
+import { toast } from "sonner";
 
 const integrations = [
   {
@@ -54,7 +56,7 @@ const Connect = () => {
   };
 
   return (
-    <div className="min-h-screen bg-muted">
+    <div className="min-h-screen bg-muted pb-24">
       <Navigation />
       <div className="container mx-auto px-4 pt-32 pb-20">
         <div className="max-w-4xl mx-auto">
@@ -154,6 +156,14 @@ const Connect = () => {
           </div>
         </div>
       </div>
+      
+      {/* Chat Input */}
+      <ChatInput 
+        placeholder="Ask about integrations or modify your setup..."
+        onSubmit={(prompt) => {
+          toast.success("Processing your request...");
+        }}
+      />
     </div>
   );
 };

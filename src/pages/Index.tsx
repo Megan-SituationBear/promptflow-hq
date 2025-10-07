@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation";
-import PromptInput from "@/components/PromptInput";
+import ChatInput from "@/components/ChatInput";
 import CommunityShowcase from "@/components/CommunityShowcase";
 import { Button } from "@/components/ui/button";
 import { Zap, Shield, Workflow } from "lucide-react";
@@ -7,7 +7,7 @@ import heroBackground from "@/assets/hero-bg.jpg";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-24">
       <Navigation />
       
       {/* Hero Section */}
@@ -32,9 +32,6 @@ const Index = () => {
               </Button>
             </div>
           </div>
-
-          {/* Prompt Input */}
-          <PromptInput />
         </div>
       </section>
 
@@ -75,6 +72,9 @@ const Index = () => {
 
       {/* Community Section */}
       <CommunityShowcase />
+      
+      {/* Chat Input */}
+      <ChatInput />
     </div>
   );
 };

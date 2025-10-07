@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
+import ChatInput from "@/components/ChatInput";
 import { Star, Users, Save, Code, FileText, Settings } from "lucide-react";
 import { toast } from "sonner";
 
@@ -30,7 +31,7 @@ const Workspace = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-24">
       <Navigation />
       <div className="container mx-auto px-4 pt-24 pb-20">
         {/* Header */}
@@ -218,6 +219,15 @@ jobs:
           </div>
         </div>
       </div>
+      
+      {/* Chat Input */}
+      <ChatInput 
+        placeholder="Refine your workflow or ask questions..."
+        onSubmit={(prompt) => {
+          setRefinedPrompt(prompt);
+          toast.success("Processing your request...");
+        }}
+      />
     </div>
   );
 };
