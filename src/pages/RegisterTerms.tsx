@@ -19,36 +19,31 @@ const RegisterTerms = () => {
       <div className="space-y-6">
         <div className="text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-            Terms & Conditions
+            Almost There!
           </h2>
           <p className="text-sm text-muted-foreground">
-            Please review and accept our terms
+            Just a few more details to get you started
           </p>
         </div>
 
-        <div className="space-y-4 max-h-64 overflow-y-auto bg-muted/30 rounded-lg p-4">
-          <p className="text-sm text-foreground/80">
-            By using COPADO AI, you agree to our Terms of Service and Privacy Policy. 
-            We collect and process your data to provide our services and improve your experience.
-          </p>
-          <p className="text-sm text-foreground/80">
-            You maintain ownership of your data and can request deletion at any time. 
-            We use industry-standard security measures to protect your information.
-          </p>
-        </div>
-
-        <div className="flex items-center space-x-2">
-          <Checkbox 
-            id="terms" 
-            checked={accepted}
-            onCheckedChange={(checked) => setAccepted(checked === true)}
-          />
-          <label
-            htmlFor="terms"
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-foreground"
-          >
-            I accept the terms and conditions
-          </label>
+        <div className="space-y-4">
+          <div className="flex items-start space-x-2">
+            <Checkbox 
+              id="terms" 
+              checked={accepted}
+              onCheckedChange={(checked) => setAccepted(checked === true)}
+              className="mt-1"
+            />
+            <label
+              htmlFor="terms"
+              className="text-sm leading-relaxed text-foreground cursor-pointer"
+            >
+              By continuing, you agree to receive emails from COPADO AI and accept our{" "}
+              <a href="#" className="text-primary hover:underline">Terms of Service</a>
+              {" "}and{" "}
+              <a href="#" className="text-primary hover:underline">Privacy Policy</a>
+            </label>
+          </div>
         </div>
 
         <div className="flex gap-3 pt-4">
