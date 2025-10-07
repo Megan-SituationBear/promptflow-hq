@@ -125,7 +125,7 @@ const Navigation = ({ state = "BeforeLogin", pageTitle }: NavigationProps) => {
                 <button
                   onClick={() => {
                     setOpen(false);
-                    navigate("/auth");
+                    navigate("/");
                   }}
                   className="px-4 py-3 text-sm font-roboto text-slate-950 capitalize tracking-tight hover:text-indigo-600 hover:bg-muted rounded-lg transition-colors text-left"
                 >
@@ -225,7 +225,7 @@ const Navigation = ({ state = "BeforeLogin", pageTitle }: NavigationProps) => {
                 <button
                   onClick={() => {
                     setOpen(false);
-                    navigate("/auth");
+                    navigate("/");
                   }}
                   className="px-4 py-3 text-sm font-roboto text-slate-950 capitalize tracking-tight hover:text-indigo-600 hover:bg-muted rounded-lg transition-colors text-left"
                 >
