@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
 import InlinePromptInput from "@/components/InlinePromptInput";
+import copadoLogo from "@/assets/copado-logo.svg";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -31,9 +31,12 @@ const Index = () => {
       {/* Hero Section - Centered */}
       <section className="flex-1 flex flex-col items-center justify-center px-4 py-12">
         <div className="w-full max-w-4xl mx-auto text-center space-y-8">
-          <Link to="/" className="inline-flex items-center gap-2 font-bold text-4xl md:text-5xl font-roboto text-foreground capitalize tracking-tight">
-            <Sparkles className="w-10 h-10 md:w-12 md:h-12" />
-            DevOps AI
+          <Link to="/" className="inline-block">
+            <img 
+              src={copadoLogo} 
+              alt="Copado AI" 
+              className="h-16 md:h-20 w-auto"
+            />
           </Link>
           
           <InlinePromptInput 

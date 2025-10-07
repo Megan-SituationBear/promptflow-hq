@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { Infinity } from "lucide-react";
-import copadoLogo from "@/assets/copado-logo.svg";
+import copadoLogoVertical from "@/assets/copado-logo-vertical.svg";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -21,13 +20,12 @@ const AuthLayout = ({ children, showBackButton = false }: AuthLayoutProps) => {
       {/* Content Container */}
       <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 md:py-12">
         {/* Logo */}
-        <div className="mb-8 md:mb-10 flex flex-col items-center gap-3">
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[hsl(217,91%,60%)] flex items-center justify-center">
-            <Infinity className="w-8 h-8 md:w-10 md:h-10 text-white" />
-          </div>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-            COPADO AI
-          </h1>
+        <div className="mb-8 md:mb-10">
+          <img 
+            src={copadoLogoVertical} 
+            alt="Copado AI" 
+            className="h-24 md:h-28 w-auto mx-auto"
+          />
         </div>
 
         {/* Main Card */}
