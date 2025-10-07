@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
+      <Navigation state="HomeMajorPages" />
       
       {/* Hero Section */}
       <section className="pt-24 md:pt-32 pb-8 md:pb-12 px-4">

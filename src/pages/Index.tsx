@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import InlinePromptInput from "@/components/InlinePromptInput";
+import Navigation from "@/components/Navigation";
 import copadoLogo from "@/assets/copado-logo.svg";
 
 const Index = () => {
@@ -12,21 +13,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Simple Navigation */}
-      <nav className="border-b border-border bg-background">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-end gap-3">
-          <Link to="/auth">
-            <Button variant="ghost" size="sm" className="font-roboto text-foreground capitalize tracking-tight hover:bg-accent">
-              Login
-            </Button>
-          </Link>
-          <Link to="/register">
-            <Button size="sm" className="font-roboto capitalize tracking-tight">
-              Get Started for Free
-            </Button>
-          </Link>
-        </div>
-      </nav>
+      <Navigation state="BeforeLogin" />
 
       {/* Hero Section - Centered */}
       <section className="flex-1 flex flex-col items-center justify-center px-4 py-12">

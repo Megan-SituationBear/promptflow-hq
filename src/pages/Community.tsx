@@ -6,7 +6,7 @@ import { Search } from "lucide-react";
 const Community = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <Navigation state="SubPages" pageTitle="Community Showcase" />
       <div className="container mx-auto px-4 pt-20 md:pt-24 pb-20">
         <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 font-roboto text-slate-950">Community Showcase</h1>
