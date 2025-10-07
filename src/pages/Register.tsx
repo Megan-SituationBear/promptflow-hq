@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FaGoogle, FaMicrosoft, FaSalesforce, FaKey } from "react-icons/fa";
 import AuthLayout from "@/components/AuthLayout";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isConnecting, setIsConnecting] = useState(false);
+  const [connectionProvider, setConnectionProvider] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -16,9 +19,62 @@ const Register = () => {
     navigate("/register/accept");
   };
 
-  const handleSSOClick = () => {
+  const handleSSOClick = (provider: string) => {
+    setConnectionProvider(provider);
+    setIsConnecting(true);
+  };
+
+  const handleAcceptConnection = () => {
     navigate("/register/accept");
   };
+
+  if (isConnecting) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Card className="max-w-md w-full mx-4">
+          <CardHeader className="text-center">
+            <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              {connectionProvider === "Salesforce" && <FaSalesforce className="w-8 h-8" />}
+              {connectionProvider === "Google" && <FaGoogle className="w-8 h-8" />}
+              {connectionProvider === "Microsoft" && <FaMicrosoft className="w-8 h-8" />}
+              {connectionProvider === "SAML" && <FaKey className="w-8 h-8" />}
+            </div>
+            <CardTitle className="text-2xl font-bold text-foreground">
+              Connect to {connectionProvider}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-center text-muted-foreground">
+              {connectionProvider} would like to access your COPADO AI account
+            </p>
+            <div className="space-y-2 bg-muted p-4 rounded-lg">
+              <p className="text-sm font-medium text-foreground">This will allow {connectionProvider} to:</p>
+              <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                <li>• Access your basic profile information</li>
+                <li>• Create and manage workflows on your behalf</li>
+                <li>• View your project history</li>
+              </ul>
+            </div>
+            <div className="flex gap-3 pt-4">
+              <Button 
+                variant="outline" 
+                className="flex-1"
+                onClick={() => setIsConnecting(false)}
+              >
+                Cancel
+              </Button>
+              <Button 
+                className="flex-1"
+                onClick={handleAcceptConnection}
+              >
+                Accept & Continue
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <AuthLayout gradientVariant="purple">
@@ -38,7 +94,7 @@ const Register = () => {
             type="button"
             variant="outline"
             className="h-11 flex items-center justify-center gap-2"
-            onClick={handleSSOClick}
+            onClick={() => handleSSOClick("Salesforce")}
           >
             <FaSalesforce className="w-4 h-4" />
             <span>Salesforce</span>
@@ -47,7 +103,7 @@ const Register = () => {
             type="button"
             variant="outline"
             className="h-11 flex items-center justify-center gap-2"
-            onClick={handleSSOClick}
+            onClick={() => handleSSOClick("Google")}
           >
             <FaGoogle className="w-4 h-4" />
             <span>Google</span>
@@ -56,7 +112,7 @@ const Register = () => {
             type="button"
             variant="outline"
             className="h-11 flex items-center justify-center gap-2"
-            onClick={handleSSOClick}
+            onClick={() => handleSSOClick("Microsoft")}
           >
             <FaMicrosoft className="w-4 h-4" />
             <span>Microsoft</span>
@@ -65,7 +121,7 @@ const Register = () => {
             type="button"
             variant="outline"
             className="h-11 flex items-center justify-center gap-2"
-            onClick={handleSSOClick}
+            onClick={() => handleSSOClick("SAML")}
           >
             <FaKey className="w-4 h-4" />
             <span>SAML</span>
