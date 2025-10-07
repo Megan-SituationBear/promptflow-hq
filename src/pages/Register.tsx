@@ -16,7 +16,7 @@ const Register = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/register/accept");
+    navigate("/register/questions");
   };
 
   const handleSSOClick = (provider: string) => {
@@ -25,7 +25,7 @@ const Register = () => {
   };
 
   const handleAcceptConnection = () => {
-    navigate("/register/accept");
+    navigate("/register/questions");
   };
 
   if (isConnecting) {
