@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Share2, Star } from "lucide-react";
-import InlinePromptInput from "@/components/InlinePromptInput";
+import { ArrowLeft, Share2, Star, Copy } from "lucide-react";
 import { toast } from "sonner";
 
-const WorkspaceGuest = () => {
+const WorkspaceComplete = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const prompt = location.state?.prompt || "Untitled Workspace";
@@ -26,8 +25,9 @@ const WorkspaceGuest = () => {
     toast.success("Link copied to clipboard");
   };
 
-  const handlePromptSubmit = (newPrompt: string) => {
-    // Redirect to register when trying to interact
+  const handleDuplicate = () => {
+    toast.success("Workspace duplicated");
+    // Navigate to register or create a duplicate
     navigate("/register");
   };
 
@@ -151,17 +151,33 @@ const WorkspaceGuest = () => {
         </div>
       </main>
 
-      {/* AI Input at Bottom - Disabled */}
-      <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border py-4 opacity-60 pointer-events-none">
+      {/* Action Buttons at Bottom */}
+      <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border py-4">
         <div className="container mx-auto px-4">
-          <InlinePromptInput
-            placeholder="Sign up to continue chatting..."
-            onSubmit={handlePromptSubmit}
-          />
+          <div className="flex items-center justify-center gap-4">
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={handleDuplicate}
+              className="flex items-center gap-2"
+            >
+              <Copy className="w-5 h-5" />
+              Duplicate
+            </Button>
+            <Button
+              variant="default"
+              size="lg"
+              onClick={handleShare}
+              className="flex items-center gap-2"
+            >
+              <Share2 className="w-5 h-5" />
+              Share
+            </Button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default WorkspaceGuest;
+export default WorkspaceComplete;

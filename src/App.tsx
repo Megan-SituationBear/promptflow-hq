@@ -12,7 +12,7 @@ import RegisterPricing from "./pages/RegisterPricing";
 import Home from "./pages/Home";
 import Connect from "./pages/Connect";
 import Workspace from "./pages/Workspace";
-import WorkspaceGuest from "./pages/WorkspaceGuest";
+import WorkspaceComplete from "./pages/WorkspaceComplete";
 import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
 
@@ -33,7 +33,7 @@ const App = () => (
           <Route path="/register/pricing" element={<RegisterPricing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/connect" element={<Connect />} />
-          <Route path="/workspace/guest" element={<WorkspaceGuest />} />
+          <Route path="/workspace/complete" element={<WorkspaceComplete />} />
           <Route path="/workspace/:id" element={<Workspace />} />
           <Route path="/community" element={<Community />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
