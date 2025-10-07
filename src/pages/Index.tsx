@@ -7,7 +7,7 @@ const Index = () => {
   const navigate = useNavigate();
 
   const handlePromptSubmit = (prompt: string) => {
-    navigate("/connect", { state: { prompt } });
+    navigate("/workspace/guest", { state: { prompt } });
   };
 
   return (
@@ -54,7 +54,7 @@ const Index = () => {
             Top Lab Experiments
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Link to="/workspace/demo-1" className="group">
+            <Link to="/workspace/guest" state={{ prompt: "Create a CI/CD Pipeline Automation with staging approval workflow" }} className="group">
               <div className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all">
                 <h3 className="font-bold text-lg mb-2 font-roboto text-card-foreground group-hover:text-primary">
                   CI/CD Pipeline Automation
@@ -69,7 +69,7 @@ const Index = () => {
               </div>
             </Link>
             
-            <Link to="/workspace/demo-2" className="group">
+            <Link to="/workspace/guest" state={{ prompt: "Set up Kubernetes monitoring with automated scaling" }} className="group">
               <div className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all">
                 <h3 className="font-bold text-lg mb-2 font-roboto text-card-foreground group-hover:text-primary">
                   Kubernetes Monitor
@@ -84,7 +84,7 @@ const Index = () => {
               </div>
             </Link>
             
-            <Link to="/workspace/demo-3" className="group">
+            <Link to="/workspace/guest" state={{ prompt: "Create Terraform templates for AWS multi-region deployment" }} className="group">
               <div className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all">
                 <h3 className="font-bold text-lg mb-2 font-roboto text-card-foreground group-hover:text-primary">
                   Infrastructure as Code
