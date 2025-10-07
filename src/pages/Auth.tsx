@@ -88,16 +88,16 @@ const Auth = () => {
     <div className="min-h-screen bg-background">
       {/* Simple Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 font-bold text-xl font-roboto text-slate-950 capitalize tracking-tight">
-            <Sparkles className="w-6 h-6" />
+        <div className="container mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 font-bold text-lg md:text-xl font-roboto text-slate-950 capitalize tracking-tight">
+            <Sparkles className="w-5 h-5 md:w-6 md:h-6" />
             DevOps AI
           </Link>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 pt-24">
-        <div className="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto py-12">
+      <div className="container mx-auto px-4 pt-20 md:pt-24">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl mx-auto py-6 md:py-12">
           {/* Registration Form */}
           <div className="flex-1">
             <Card className="border-2">
@@ -202,31 +202,31 @@ const Auth = () => {
           </div>
 
           {/* Promo Area */}
-          <div className="flex-1 space-y-6">
+          <div className="flex-1 space-y-4 md:space-y-6">
             <div>
-              <h3 className="text-2xl font-bold mb-6 text-slate-950 font-roboto">Free Plan Includes:</h3>
-              <div className="space-y-4">
-                <div className="bg-muted rounded-lg p-6 border border-border">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Sparkles className="w-5 h-5 text-indigo-600" />
+              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-slate-950 font-roboto">Free Plan Includes:</h3>
+              <div className="space-y-3 md:space-y-4">
+                <div className="bg-muted rounded-lg p-4 md:p-6 border border-border">
+                  <div className="flex items-start gap-3 md:gap-4">
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-indigo-600" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2 text-slate-950 font-roboto">Unlimited AI-Powered Workflows</h4>
-                      <p className="text-muted-foreground font-roboto">
+                      <h4 className="font-bold text-base md:text-lg mb-1 md:mb-2 text-slate-950 font-roboto">Unlimited AI-Powered Workflows</h4>
+                      <p className="text-sm md:text-base text-muted-foreground font-roboto">
                         Generate and deploy unlimited DevOps automation workflows with our advanced AI engine. No limits on creativity.
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="bg-muted rounded-lg p-6 border border-border">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Sparkles className="w-5 h-5 text-indigo-600" />
+                <div className="bg-muted rounded-lg p-4 md:p-6 border border-border">
+                  <div className="flex items-start gap-3 md:gap-4">
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-indigo-600" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2 text-slate-950 font-roboto">500+ Integration Connectors</h4>
-                      <p className="text-muted-foreground font-roboto">
+                      <h4 className="font-bold text-base md:text-lg mb-1 md:mb-2 text-slate-950 font-roboto">500+ Integration Connectors</h4>
+                      <p className="text-sm md:text-base text-muted-foreground font-roboto">
                         Connect to all your favorite tools - Salesforce, Jira, Slack, GitHub, and 500+ more integrations out of the box.
                       </p>
                     </div>

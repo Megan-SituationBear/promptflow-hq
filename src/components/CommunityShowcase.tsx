@@ -31,18 +31,18 @@ const projects = [
 
 const CommunityShowcase = () => {
   return (
-    <div className="w-full py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 font-roboto text-slate-950">
+    <div className="w-full py-12 md:py-20 bg-white px-4">
+      <div className="container mx-auto">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 md:mb-4 font-roboto text-slate-950">
             Community Creations
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base md:text-lg">
             See what others are building with DevOps AI
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, index) => (
             <Card key={index} className="hover:shadow-[var(--shadow-elevated)] transition-all cursor-pointer">
               <CardHeader>

@@ -58,11 +58,11 @@ const Connect = () => {
   return (
     <div className="min-h-screen bg-muted pb-24">
       <Navigation />
-      <div className="container mx-auto px-4 pt-32 pb-20">
+      <div className="container mx-auto px-4 pt-24 md:pt-32 pb-20">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4 font-roboto text-slate-950">Connect Your Tools</h1>
-            <p className="text-muted-foreground text-lg">
+          <div className="text-center mb-8 md:mb-12">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 font-roboto text-slate-950">Connect Your Tools</h1>
+            <p className="text-muted-foreground text-base md:text-lg px-4">
               Let's set up your integrations to get started
             </p>
           </div>
@@ -94,8 +94,8 @@ const Connect = () => {
           </Card>
 
           {/* Optional Integrations */}
-          <div className="space-y-4 mb-8">
-            <h3 className="text-lg font-semibold font-roboto text-slate-950">Optional Integrations</h3>
+          <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
+            <h3 className="text-base md:text-lg font-semibold font-roboto text-slate-950">Optional Integrations</h3>
             {integrations.map((integration) => {
               const Icon = integration.icon;
               const isSelected = selectedIntegrations.includes(integration.id);
@@ -144,12 +144,13 @@ const Connect = () => {
             </Card>
           )}
 
-          <div className="flex justify-center">
+          <div className="flex justify-center px-4">
             <Button
               variant="default"
               size="lg"
               onClick={handleContinue}
               disabled={!salesforceConnected}
+              className="w-full sm:w-auto"
             >
               Continue to Workspace
             </Button>

@@ -26,10 +26,10 @@ const ChatInput = ({ onSubmit, placeholder = "Describe your DevOps workflow..." 
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-border z-50">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-2 sm:px-4 py-2 sm:py-4">
         <div className="max-w-4xl mx-auto">
-          <div className="flex items-end gap-2">
-            <div className="flex gap-2">
+          <div className="flex items-end gap-1 sm:gap-2">
+            <div className="hidden sm:flex gap-2">
               <Button
                 variant="ghost"
                 size="icon"
@@ -59,7 +59,7 @@ const ChatInput = ({ onSubmit, placeholder = "Describe your DevOps workflow..." 
             <div className="flex-1 relative">
               <Textarea
                 placeholder={placeholder}
-                className="min-h-[52px] max-h-[200px] resize-none rounded-lg pr-12 py-3"
+                className="min-h-[44px] sm:min-h-[52px] max-h-[200px] resize-none rounded-lg pr-10 sm:pr-12 py-2 sm:py-3 text-sm sm:text-base"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={(e) => {
@@ -72,9 +72,9 @@ const ChatInput = ({ onSubmit, placeholder = "Describe your DevOps workflow..." 
                 onClick={handleSubmit}
                 disabled={!prompt.trim()}
                 size="icon"
-                className="absolute right-2 bottom-2 h-8 w-8 rounded-md"
+                className="absolute right-1.5 sm:right-2 bottom-1.5 sm:bottom-2 h-7 w-7 sm:h-8 sm:w-8 rounded-md"
               >
-                <Sparkles className="w-4 h-4" />
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </Button>
             </div>
           </div>

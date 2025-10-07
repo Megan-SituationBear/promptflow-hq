@@ -33,21 +33,21 @@ const Workspace = () => {
   return (
     <div className="min-h-screen bg-background pb-24">
       <Navigation />
-      <div className="container mx-auto px-4 pt-24 pb-20">
+      <div className="container mx-auto px-4 pt-20 md:pt-24 pb-20">
         {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
+        <div className="mb-6 md:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <div>
-              <h1 className="text-3xl font-bold mb-2 font-roboto text-slate-950">Your DevOps Workspace</h1>
-              <div className="flex items-center gap-2">
+              <h1 className="text-2xl md:text-3xl font-bold mb-2 font-roboto text-slate-950">Your DevOps Workspace</h1>
+              <div className="flex flex-wrap items-center gap-2">
                 {integrations.map((integration: string) => (
-                  <Badge key={integration} variant="secondary">
+                  <Badge key={integration} variant="secondary" className="text-xs">
                     {integration}
                   </Badge>
                 ))}
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <Button
                 variant="outline"
                 size="sm"
@@ -57,22 +57,22 @@ const Workspace = () => {
                 <Star className={`w-4 h-4 ${isStarred ? "fill-current" : ""}`} />
               </Button>
               <Button variant="outline" size="sm" onClick={handleCollaborate}>
-                <Users className="w-4 h-4" />
-                Collaborate
+                <Users className="w-4 h-4 mr-1 sm:mr-0" />
+                <span className="sm:hidden">Collaborate</span>
               </Button>
               <Button
                 variant="default"
                 size="sm"
                 onClick={handleSave}
               >
-                <Save className="w-4 h-4" />
-                Save
+                <Save className="w-4 h-4 mr-1 sm:mr-0" />
+                <span className="sm:hidden">Save</span>
               </Button>
             </div>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid lg:grid-cols-3 gap-4 md:gap-6">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Refine Section */}
