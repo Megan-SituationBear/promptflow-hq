@@ -14,10 +14,15 @@ const Index = () => {
     <div className="min-h-screen bg-background flex flex-col">
       {/* Simple Navigation */}
       <nav className="border-b border-border bg-background">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-end">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-end gap-3">
           <Link to="/auth">
             <Button variant="ghost" size="sm" className="font-roboto text-foreground capitalize tracking-tight hover:bg-accent">
               Login
+            </Button>
+          </Link>
+          <Link to="/register">
+            <Button size="sm" className="font-roboto capitalize tracking-tight">
+              Get Started for Free
             </Button>
           </Link>
         </div>

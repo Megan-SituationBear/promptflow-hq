@@ -5,6 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
+import Register from "./pages/Register";
+import RegisterTerms from "./pages/RegisterTerms";
+import RegisterQuestions from "./pages/RegisterQuestions";
+import RegisterPricing from "./pages/RegisterPricing";
 import Home from "./pages/Home";
 import Connect from "./pages/Connect";
 import Workspace from "./pages/Workspace";
@@ -22,6 +26,10 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/register/terms" element={<RegisterTerms />} />
+          <Route path="/register/questions" element={<RegisterQuestions />} />
+          <Route path="/register/pricing" element={<RegisterPricing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/connect" element={<Connect />} />
           <Route path="/workspace/:id" element={<Workspace />} />
