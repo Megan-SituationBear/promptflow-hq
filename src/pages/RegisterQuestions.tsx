@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
 import AuthLayout from "@/components/AuthLayout";
 import { Beaker } from "lucide-react";
 
@@ -10,8 +11,11 @@ interface Question {
   question: string;
   placeholder?: string;
   field: string;
-  type: 'text' | 'choice';
+  type: 'text' | 'choice' | 'slider';
   choices?: string[];
+  sliderLabels?: string[];
+  sliderMin?: number;
+  sliderMax?: number;
 }
 
 const questions: Question[] = [
@@ -44,15 +48,33 @@ const questions: Question[] = [
     field: "workPreference",
     type: "choice",
     choices: ["on my own", "with my team", "manage my team"]
+  },
+  {
+    id: 4,
+    title: "Last question",
+    question: "How technical do you want me to be?",
+    field: "technicalLevel",
+    type: "slider",
+    sliderMin: 0,
+    sliderMax: 5,
+    sliderLabels: [
+      "Mostly chat",
+      "Light admin mostly planning",
+      "Strong admin but human language",
+      "Developer level",
+      "Technical lite",
+      "Hardcore machine"
+    ]
   }
 ];
 
 const RegisterQuestions = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string>>({
+  const [answers, setAnswers] = useState<Record<string, string | number>>({
     name: "",
     freeUpDay: "",
-    workPreference: ""
+    workPreference: "",
+    technicalLevel: 2
   });
   const [isAnimating, setIsAnimating] = useState(true);
   const navigate = useNavigate();
@@ -142,7 +164,7 @@ const RegisterQuestions = () => {
                   className="h-12 text-center"
                   autoFocus
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter' && currentAnswer.trim()) {
+                    if (e.key === 'Enter' && typeof currentAnswer === 'string' && currentAnswer.trim()) {
                       handleNext();
                     }
                   }}
@@ -150,7 +172,41 @@ const RegisterQuestions = () => {
                 <button
                   className="w-full h-12 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={handleNext}
-                  disabled={!currentAnswer.trim()}
+                  disabled={typeof currentAnswer !== 'string' || !currentAnswer.trim()}
+                >
+                  {currentQuestion < questions.length - 1 ? "Next" : "Continue"}
+                </button>
+              </>
+            ) : currentQ.type === 'slider' ? (
+              <>
+                <div className="space-y-8 px-2">
+                  <div className="space-y-4">
+                    <Slider
+                      min={currentQ.sliderMin || 0}
+                      max={currentQ.sliderMax || 5}
+                      step={1}
+                      value={[typeof currentAnswer === 'number' ? currentAnswer : 2]}
+                      onValueChange={(value) => setAnswers({ ...answers, [currentQ.field]: value[0] })}
+                      className="w-full"
+                    />
+                    <div className="text-center">
+                      <p className="text-lg font-semibold text-primary">
+                        {typeof currentAnswer === 'number' && currentQ.sliderLabels?.[currentAnswer]}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-6 gap-2 text-xs text-muted-foreground">
+                    {currentQ.sliderLabels?.map((label, idx) => (
+                      <div key={idx} className="text-center">
+                        <div className="font-medium mb-1">{idx}</div>
+                        <div className="leading-tight">{label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <button
+                  className="w-full h-12 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors mt-6"
+                  onClick={handleNext}
                 >
                   {currentQuestion < questions.length - 1 ? "Next" : "Continue"}
                 </button>
