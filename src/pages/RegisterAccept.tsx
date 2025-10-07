@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import AuthLayout from "@/components/AuthLayout";
 
-const RegisterTerms = () => {
+const RegisterAccept = () => {
   const [accepted, setAccepted] = useState(false);
   const navigate = useNavigate();
 
@@ -46,25 +46,16 @@ const RegisterTerms = () => {
           </div>
         </div>
 
-        <div className="flex gap-3 pt-4">
-          <Button 
-            variant="secondary" 
-            className="flex-1"
-            onClick={() => navigate("/register")}
-          >
-            Back
-          </Button>
-          <Button 
-            className="flex-1"
-            disabled={!accepted}
-            onClick={handleContinue}
-          >
-            Continue
-          </Button>
-        </div>
+        <Button 
+          className="w-full"
+          disabled={!accepted}
+          onClick={handleContinue}
+        >
+          Continue
+        </Button>
       </div>
     </AuthLayout>
   );
 };
 
-export default RegisterTerms;
+export default RegisterAccept;

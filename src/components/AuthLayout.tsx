@@ -25,13 +25,13 @@ const AuthLayout = ({ children, showBackButton = false, gradientVariant = 'balan
       />
       
       {/* Content Container */}
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 md:py-12">
+      <div className="min-h-screen flex flex-col items-center px-4 pt-12 md:pt-16 pb-8">
         {/* Logo */}
-        <div className="mb-8 md:mb-10">
+        <div className="mb-8">
           <img 
             src={copadoLogoVertical} 
             alt="Copado AI" 
-            className="h-24 md:h-28 w-auto mx-auto"
+            className="h-20 md:h-24 w-auto mx-auto"
           />
         </div>
 

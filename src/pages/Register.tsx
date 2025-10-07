@@ -13,11 +13,11 @@ const Register = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/register/terms");
+    navigate("/register/accept");
   };
 
   const handleSSOClick = () => {
-    navigate("/register/terms");
+    navigate("/register/accept");
   };
 
   return (

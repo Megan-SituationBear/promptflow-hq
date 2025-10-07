@@ -16,7 +16,7 @@ const Auth = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/register/terms");
+    navigate("/home");
   };
 
   const handleSSO = (provider: string) => {
@@ -25,7 +25,7 @@ const Auth = () => {
   };
 
   const handleAcceptConnection = () => {
-    navigate("/register/terms");
+    navigate("/home");
   };
 
   if (isConnecting) {
