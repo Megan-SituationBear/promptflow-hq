@@ -31,8 +31,8 @@ const Auth = () => {
 
   if (isConnecting) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <Card className="max-w-md w-full mx-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted px-4">
+        <Card className="max-w-md w-full bg-white border-2 shadow-lg">
           <CardHeader className="text-center">
             <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
               {connectionProvider === "Google" && <FcGoogle className="w-8 h-8" />}
@@ -47,9 +47,9 @@ const Auth = () => {
               {connectionProvider === "Salesforce" && <SiSalesforce className="w-8 h-8 text-blue-500" />}
               {connectionProvider === "Okta" && <Mail className="w-8 h-8 text-slate-600" />}
             </div>
-            <CardTitle className="text-2xl font-roboto text-slate-950">
+            <h3 className="text-2xl font-bold font-roboto text-slate-950">
               Connect to {connectionProvider}
-            </CardTitle>
+            </h3>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-center text-muted-foreground font-roboto">
@@ -85,7 +85,7 @@ const Auth = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-muted">
       {/* Simple Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
@@ -100,9 +100,9 @@ const Auth = () => {
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl mx-auto py-6 md:py-12">
           {/* Registration Form */}
           <div className="flex-1">
-            <Card className="border-2">
-              <CardHeader>
-                <CardTitle className="text-3xl font-roboto text-slate-950">Get Started Free</CardTitle>
+            <Card className="bg-white border-2 shadow-lg">
+              <CardHeader className="text-center">
+                <h3 className="text-2xl md:text-3xl font-bold font-roboto text-slate-950">Get Started Free</h3>
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* SSO Buttons */}
@@ -202,10 +202,12 @@ const Auth = () => {
           </div>
 
           {/* Promo Area */}
-          <div className="flex-1 space-y-4 md:space-y-6">
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-slate-950 font-roboto">Free Plan Includes:</h3>
-              <div className="space-y-3 md:space-y-4">
+          <div className="flex-1">
+            <Card className="bg-white border-2 shadow-lg">
+              <CardHeader>
+                <h3 className="text-xl md:text-2xl font-bold text-center mb-4 text-slate-950 font-roboto">Free Plan Includes:</h3>
+              </CardHeader>
+              <CardContent className="space-y-3 md:space-y-4">
                 <div className="bg-muted rounded-lg p-4 md:p-6 border border-border">
                   <div className="flex items-start gap-3 md:gap-4">
                     <div className="w-8 h-8 md:w-10 md:h-10 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -232,8 +234,8 @@ const Auth = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
